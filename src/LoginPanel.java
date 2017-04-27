@@ -212,7 +212,7 @@ public class LoginPanel extends JPanel{
         if (auth(email, password)) {
             for (String[] user : users) {
                 if (user[1].equals(email)) {
-                    marketPlaceDriver.setAccountType(user[3]);
+                    marketPlaceDriver.setAccountType(user[3], user[0]);
                 }
             }
         } else {
@@ -238,6 +238,7 @@ public class LoginPanel extends JPanel{
                 writer.write(newAccount);
                 writer.close();
                 fw.close();
+                lastID = lastID + 1;
                 JOptionPane.showMessageDialog(this, "Account created. You can now log in.", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
                 clearInputs();
             } catch (IOException e) {

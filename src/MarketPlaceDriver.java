@@ -41,7 +41,7 @@ public class MarketPlaceDriver extends JFrame {
      * Sets the account type
      * @param accountType Type to set
      */
-    public void setAccountType(String accountType) {
+    public void setAccountType(String accountType, String userID) {
         this.accountType = accountType;
         loginPanel.stop();
         remove(loginPanel);
