@@ -195,10 +195,14 @@ public class AdminPanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * This method reads the text from the file given by filename
+     * @param display
+     * @param fileName
+     */
     private static void readTextFile(JTextArea display, String fileName) {
         try {
-            BufferedReader inStream
-                    = new BufferedReader(new FileReader(fileName));
+            BufferedReader inStream = new BufferedReader(new FileReader(fileName));
             String line = inStream.readLine();
             while (line != null) {
                 display.append(line + "\n");
@@ -261,7 +265,10 @@ public class AdminPanel extends JPanel implements ActionListener {
         in.close();
     }
 
-
+    /**
+     * This method handles the situation when there is an action performed
+     * @param evt
+     */
     public void actionPerformed(ActionEvent evt) {
 
         if (evt.getSource() == updateUsersBtn) {
@@ -278,7 +285,9 @@ public class AdminPanel extends JPanel implements ActionListener {
         }
     }
 
-
+    /**
+     * This method starts the functions and enables the class to run
+     */
     public void start(){
         setFocusable(true);
         setVisible(true);

@@ -28,7 +28,6 @@ public class MarketPlaceDriver extends JFrame {
 
     /**
     * Defines the default behaviors for the MarketPlaceDriver
-    *
     */
     public MarketPlaceDriver() {
         super();
@@ -41,7 +40,6 @@ public class MarketPlaceDriver extends JFrame {
 
     /**
      *  Start is called to start the frame and start the maketplace
-     *
      */
     public void Start() {
 //        this.add(loginPanel);
