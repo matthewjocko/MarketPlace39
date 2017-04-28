@@ -1,0 +1,4 @@
+ID, Email, Password, Type, First Name, Last Name
+0<Col/>email<Col/>985191728<Col/>Seller<Col/>Name<Col/>Name
+<Line/>1<Col/>email@email.com<Col/>17921552184018401904177618241600<Col/>Seller<Col/>first<Col/>name
+<Line/>2<Col/>a<Col/>1552<Col/>Seller<Col/>a<Col/>a
