@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -10,10 +11,10 @@ import java.util.Scanner;
  * Apr 27, 2017
  */
 public class BuyerPanel extends JPanel {
-    private String sellerID;
-    private File userfile;
+    private String buyerID;
+    private File inventoryFile;
     private String[][] inventory;
-    private String[] inputData;
+    private String[] inputDataInv;
     private ArrayList<Listing> listings;
 
     private final String LINETAG = "<Line/>";
@@ -21,19 +22,67 @@ public class BuyerPanel extends JPanel {
     private final int FRAME_WIDTH = 1000;
     private final int FRAME_HEIGHT = 1000;
     private final int DEFAULT_COLUNM_SIZE = 25;
+    private final int COLS = 6;
+
+    private JLabel inventoryLabel;
+    private JLabel cartLabel;
+    private JButton addToCartBtn;
+    private JButton removeFromCartBtn;
+    private DefaultListModel inventoryListModel;
+    private DefaultListModel cartListModel;
+    private JList inventoryList;
+    private JList cartList;
+
+    private JPanel buttonPanel;
+    private JPanel inventoryPanel;
+    private JPanel cartPanel;
+
 
     public BuyerPanel() {
-        this.userfile = new File("Inventory.txt");
+        setLayout(new BorderLayout());
+        this.inventoryFile = new File("Inventory.txt");
         listings = new ArrayList<Listing>();
+
+        inventoryListModel = new DefaultListModel();
+        inventoryList = new JList(inventoryListModel);
+
+        cartListModel = new DefaultListModel();
+        cartList = new JList(cartListModel);
+
+        inventoryLabel = new JLabel("Inventory");
+        cartLabel = new JLabel("Cart");
+        addToCartBtn = new JButton("Add >>");
+        removeFromCartBtn = new JButton("<< Remove");
+
+        buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
+        buttonPanel.add(addToCartBtn);
+        buttonPanel.add(removeFromCartBtn);
+
+        inventoryPanel = new JPanel();
+        inventoryPanel.setLayout(new BoxLayout(inventoryPanel, BoxLayout.PAGE_AXIS));
+        inventoryPanel.add(inventoryLabel);
+        inventoryPanel.add(new JScrollPane(inventoryList));
+
+        cartPanel = new JPanel();
+        cartPanel.setLayout(new BoxLayout(cartPanel, BoxLayout.PAGE_AXIS));
+        cartPanel.add(cartLabel);
+        cartPanel.add(new JScrollPane(cartList));
+
+        add(buttonPanel, BorderLayout.CENTER);
+        add(inventoryPanel, BorderLayout.WEST);
+        add(cartPanel, BorderLayout.EAST);
+
     }
 
     /**
      * Starts the BuyerPanel
      */
-    public void start(String sellerID) {
+    public void start(String buyerID) {
         setFocusable(true);
         setVisible(true);
-        this.sellerID = sellerID;
+
+        this.buyerID = buyerID;
         updateInventory();
     }
 
@@ -41,7 +90,7 @@ public class BuyerPanel extends JPanel {
      *  Updates the inventory 2d array with content from inventory.txt
      */
     private void updateInventory() {
-        inputData = null;
+        inputDataInv = null;
         setArray();
         fillArray();
         updateListings();
@@ -51,9 +100,9 @@ public class BuyerPanel extends JPanel {
      * Updates the listings available
      */
     private void updateListings() {
-        for (String[] currentRow : inventory) {
-            listings.add(new Listing(new Item(currentRow[2], Double.valueOf(currentRow[3]), currentRow[4],
-                    currentRow[1], currentRow[0]), Integer.valueOf(currentRow[5]), currentRow[0]));
+        for (int i = 0; i < inventory.length; i++) {
+            listings.add(new Listing(new Item(inventory[i][2], Double.valueOf(inventory[i][3]), inventory[i][4],
+                    inventory[i][1], inventory[i][0]), Integer.valueOf(inventory[i][5]), inventory[i][0]));
         }
     }
 
@@ -61,8 +110,8 @@ public class BuyerPanel extends JPanel {
      *  Fills the inventory 2d array with the contents from the inventory.txt file
      */
     private void fillArray() {
-        for(int j = 0; j < inputData.length; j++) {
-            String currentLine = inputData[j];
+        for(int j = 0; j < inputDataInv.length; j++) {
+            String currentLine = inputDataInv[j];
             String[] tmpLine = currentLine.split(ROWTAG);
             for(int i = 0; i < tmpLine.length; i++) {
                 String tmp = tmpLine[i];
@@ -75,12 +124,13 @@ public class BuyerPanel extends JPanel {
      *  Sets the inventory 2d array to the appropriate size
      */
     private void setArray() {
+        inventory = null;
         int rows = 0;
         int fields = 0;
         Scanner in = null;
         String content = "";
         try {
-            in = new Scanner(userfile);
+            in = new Scanner(inventoryFile);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -88,9 +138,9 @@ public class BuyerPanel extends JPanel {
         while (in.hasNextLine()) {
             content = content + in.nextLine();
         }
-        inputData = content.split(LINETAG);
-        rows = inputData.length;
-        fields = inputData[0].split(ROWTAG).length;
+        inputDataInv = content.split(LINETAG);
+        rows = inputDataInv.length;
+        fields = COLS;
         inventory = new String[rows][fields];
         in.close();
     }
