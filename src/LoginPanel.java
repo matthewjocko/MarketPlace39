@@ -1,3 +1,17 @@
+/**
+ * Final Project C212
+ * Due: 4-28-17
+ *
+ * @Authors:
+ * Matthew Lieberman
+ * Adam Kummer
+ * Charles Frank
+ *
+ * Last Updated: 4-28-17
+ *
+ */
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,11 +20,6 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/**
- * Charles Frank
- * charfran
- * Apr 24, 2017
- */
 public class LoginPanel extends JPanel{
     private final String[] TYPES = {"Seller", "Buyer"};
 

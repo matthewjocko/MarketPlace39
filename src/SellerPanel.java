@@ -1,3 +1,16 @@
+/**
+ * Final Project C212
+ * Due: 4-28-17
+ *
+ * @Authors:
+ * Matthew Lieberman
+ * Adam Kummer
+ * Charles Frank
+ *
+ * Last Updated: 4-28-17
+ *
+ */
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -7,11 +20,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Charles Frank
- * charfran
- * Apr 27, 2017
- */
 public class SellerPanel extends JPanel {
     private String sellerID;
     private File inventoryFile;

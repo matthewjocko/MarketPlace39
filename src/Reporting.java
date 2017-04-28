@@ -1,12 +1,20 @@
-
+/**
+ * Final Project C212
+ * Due: 4-28-17
+ *
+ * @Authors:
+ * Matthew Lieberman
+ * Adam Kummer
+ * Charles Frank
+ *
+ * Last Updated: 4-28-17
+ *
+ */
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/**
- * Created by AdamKummer on 4/27/17.
- */
 public class Reporting
 {
     private File transactionList;
