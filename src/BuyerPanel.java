@@ -1,4 +1,3 @@
-package MarketPlaceSeller;
 
 /**
  * Adam Kummer
