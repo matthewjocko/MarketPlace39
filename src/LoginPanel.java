@@ -43,10 +43,11 @@ public class LoginPanel extends JPanel{
     private ActionListener createAccountBtnLis;
 
     private final String LINETAG = "<Line/>";
-    private final String ROWTAG = "<Col/>";
+    private final String COLTAG = "<Col/>";
     private final int FRAME_WIDTH = 1000;
     private final int FRAME_HEIGHT = 1000;
     private final int DEFAULT_COLUNM_SIZE = 25;
+    private  final int COLS = 6;
     private final int y = 40;
     private final int x = 100;
     private int lastID = 0;
@@ -169,15 +170,9 @@ public class LoginPanel extends JPanel{
     private void fillArray() {
         for(int j = 0; j < inputData.length; j++) {
             String currentLine = inputData[j];
-            String[] tmpLine = currentLine.split(ROWTAG);
+            String[] tmpLine = currentLine.split(COLTAG);
             for(int i = 0; i < tmpLine.length; i++) {
                 String tmp = tmpLine[i];
-//                if (tmp.charAt(0) == " ".charAt(0)) {
-//                    tmp = tmp.substring(1);
-//                }
-//                if (tmp.charAt(tmp.length() - 1) == " ".charAt(0)) {
-//                    tmp = tmp.substring(0, tmp.length() - 2);
-//                }
                 users[j][i] = tmp;
             }
         }
@@ -197,18 +192,12 @@ public class LoginPanel extends JPanel{
             e.printStackTrace();
         }
         in.nextLine();
-//        while(in.hasNextLine()) {
-//            String nextLine = in.nextLine();
-//            if(nextLine.charAt(0) != ",".charAt(0)) {
-//                inputData.add(nextLine);
-//            }
-//        }
         while (in.hasNextLine()) {
             content = content + in.nextLine();
         }
         inputData = content.split(LINETAG);
         rows = inputData.length;
-        fields = inputData[0].split(ROWTAG).length;
+        fields = COLS;
         users = new String[rows][fields];
         in.close();
     }
@@ -243,7 +232,7 @@ public class LoginPanel extends JPanel{
             try {
                 fw = new FileWriter(userfile, true);
                 writer = new PrintWriter(fw);
-                newAccount = "\n" + LINETAG + (lastID + 1) + ROWTAG + email + ROWTAG + hash(password) + ROWTAG + type + ROWTAG + firstName + ROWTAG + lastName;
+                newAccount = "\n" + LINETAG + (lastID + 1) + COLTAG + email + COLTAG + hash(password) + COLTAG + type + COLTAG + firstName + COLTAG + lastName;
                 writer.write(newAccount);
                 writer.close();
                 fw.close();
