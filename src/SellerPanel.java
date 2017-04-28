@@ -55,6 +55,7 @@ public class SellerPanel extends JPanel {
     private ActionListener updateInvLis;
     private ActionListener addInvLis;
     private ActionListener removeInvLis;
+    private ListSelectionListener listLisener;
 
     private final String LINETAG = "<Line/>";
     private final String COLTAG = "<Col/>";
@@ -83,7 +84,15 @@ public class SellerPanel extends JPanel {
         addRemovePan = new JPanel();
         addRemovePan.setLayout(new BoxLayout(addRemovePan, BoxLayout.PAGE_AXIS));
 
-
+        listLisener = new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                selectedIndex = list.getSelectedIndex();
+                try {
+                    fillInv(list.getSelectedValue().toString());
+                } catch (Exception ignored) {
+                }
+            }
+        };
         updateInfoLis = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 updateInfo();
@@ -141,15 +150,7 @@ public class SellerPanel extends JPanel {
         add(scrollPane, BorderLayout.NORTH);
         setFocusable(true);
         setVisible(true);
-        list.addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                selectedIndex = list.getSelectedIndex();
-                try {
-                    fillInv(list.getSelectedValue().toString());
-                } catch (Exception ignored) {
-                }
-            }
-        });
+        list.addListSelectionListener(listLisener);
 
         updateInfoBtn.addActionListener(updateInfoLis);
         updateInvBtn.addActionListener(updateInvLis);
@@ -263,7 +264,7 @@ public class SellerPanel extends JPanel {
      * Updates display with items from listing
      */
     private void updateInventoryDisplay() {
-        //TODO This method needs to work
+        //TODO This method needs to work. Not updating Textfields after add/remove. Not updating scrollpane after add/remove
         updateInventory();
         model = null;
         list = null;
@@ -271,10 +272,10 @@ public class SellerPanel extends JPanel {
         model = new DefaultListModel();
         list = new JList(model);
         scrollPane = new JScrollPane(list);
-        model.removeAllElements();
         for (Listing listing : listings) {
             model.addElement(listing.getItem().getName());
         }
+        scrollPane.update(this.getGraphics());
     }
 
     /**
