@@ -153,10 +153,10 @@ public class Admin extends JFrame implements ActionListener {
     }
 
 
-    public static void main(String args[]) throws IOException {
-        new Admin().setVisible(true);
-
-    }
+//    public static void main(String args[]) throws IOException {
+//        new Admin().setVisible(true);
+//
+//    }
 }
 
 
