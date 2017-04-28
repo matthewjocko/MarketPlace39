@@ -19,6 +19,9 @@ public class MarketPlaceDriver extends JFrame {
 
     //TODO add JFrame fields
 
+    /**
+    * Defines the default behaviors for the MarketPlaceDriver
+    */
     public MarketPlaceDriver() {
         super();
         setTitle("Market Place");

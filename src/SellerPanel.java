@@ -146,6 +146,7 @@ public class SellerPanel extends JPanel {
 
     /**
      * Starts the SellerPanel
+     * @param sellerID
      */
     public void start(String sellerID) {
         this.sellerID = sellerID;
@@ -453,6 +454,9 @@ public class SellerPanel extends JPanel {
         }
     }
 
+    /**
+     * Updates the users file with the info given
+     */
     private void updateUsersFile() {
         FileWriter fw = null;
         PrintWriter writer = null;
@@ -473,7 +477,11 @@ public class SellerPanel extends JPanel {
         fillUser();
     }
 
-
+    /**
+     * Hashes the password for use in the text file
+     * @param password
+     * @return
+     */
     private String hash(char[] password) {
         String hash = "";
         for (char ch : password) {
@@ -497,6 +505,9 @@ public class SellerPanel extends JPanel {
         }
     }
 
+    /**
+     * Updates the inventory file with the new info
+     */
     private void updateInventoryFile() {
         FileWriter fw = null;
         PrintWriter writer = null;
@@ -563,6 +574,7 @@ public class SellerPanel extends JPanel {
 
     /**
      * Removes selectedID item from inventory
+     * @param pos
      */
     private void removeInv(String pos) {
 //        model.removeElementAt(selectedIndex);

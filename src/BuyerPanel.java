@@ -44,7 +44,9 @@ public class BuyerPanel extends JPanel {
     private JPanel inventoryPanel;
     private JPanel cartPanel;
 
-
+    /**
+     * Initialization for the BuyerPanel class
+     */
     public BuyerPanel() {
         setLayout(new BorderLayout());
         this.inventoryFile = new File("Inventory.txt");

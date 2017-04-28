@@ -35,22 +35,37 @@ public class Item {
         this.sellerID = sellerID;
     }
 
+    /**
+     * Returns the price
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Returns the description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Returns the name
+     */
     public String getName() {
         return Name;
     }
 
+    /**
+     * Returns the itemID
+     */
     public String getItemID() {
         return itemID;
     }
 
+    /**
+     * Returns the sellerID
+     */
     public String getSellerID() {
         return sellerID;
     }

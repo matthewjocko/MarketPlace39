@@ -211,6 +211,8 @@ public class LoginPanel extends JPanel{
 
     /**
      * This method logs a user into the system with the help of the auth method
+     * @param email
+     * @param password
      */
     private void login(String email, char[] password) {
         if (auth(email, password)) {
@@ -228,6 +230,12 @@ public class LoginPanel extends JPanel{
 
     /**
      * Creates an account for a new user
+     * @param email
+     * @param password
+     * @param confirmPassword
+     * @param type
+     * @param firstName
+     * @param lastName
      */
     private void createAccount(String email, char[] password, char[] confirmPassword, String type, String firstName, String lastName) {
         FileWriter fw = null;
@@ -289,6 +297,11 @@ public class LoginPanel extends JPanel{
         return false;
     }
 
+    /**
+     * method that hashes the password for the text file
+     * @param password
+     * @return
+     */
     private String hash(char[] password) {
         String hash = "";
         for (char ch : password) {

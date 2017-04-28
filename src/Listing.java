@@ -17,30 +17,46 @@ public class Listing {
     private int quantity;
     private String sellerID;
 
-
+    /**
+     * Method that initializes the required fields
+     * @param item
+     * @param quantity
+     * @param sellerID
+     */
     public Listing(Item item, int quantity, String sellerID) {
         this.item = item;
         this.quantity = quantity;
         this.sellerID = sellerID;
     }
 
-    public Listing(int quantity, String sellerID) {
-        this.quantity = quantity;
-        this.sellerID = sellerID;
-    }
-
+    /**
+     * Method that returns the item
+     * @return item
+     */
     public Item getItem() {
         return item;
     }
 
+    /**
+     * returns the quantity of the item
+     * @return quantity
+     */
     public int getQuantity() {
         return quantity;
     }
 
+    /**
+     * returns the sellerID for the listing
+     * @return sellerID
+     */
     public String getSellerID() {
         return sellerID;
     }
 
+    /**
+     * method that handles the situation when an item is sold
+     * @param amount
+     */
     public void sold(int amount) {
         quantity = quantity - amount;
     }

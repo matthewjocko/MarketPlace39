@@ -10,7 +10,9 @@
  *
  */
 
-
+/**
+ * method that creates a MarketPlaceDriver object
+ */
 public class Main {
     public static void main(String[] args) {
         MarketPlaceDriver marketPlaceDriver = new MarketPlaceDriver();
