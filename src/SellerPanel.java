@@ -141,9 +141,6 @@ public class SellerPanel extends JPanel {
      * Starts the SellerPanel
      */
     public void start(String sellerID) {
-        JOptionPane.showMessageDialog(this,
-                "Updating personal information will reset password to new password!",
-                    "WARNING", JOptionPane.WARNING_MESSAGE);
         this.sellerID = sellerID;
         updateInventory();
         updateInventoryDisplay();
@@ -179,6 +176,9 @@ public class SellerPanel extends JPanel {
         add(updateInvPan, BorderLayout.EAST);
         add(addRemovePan, BorderLayout.CENTER);
         fillUser();
+        JOptionPane.showMessageDialog(this,
+                "Updating personal information will reset password to new password!",
+                "WARNING", JOptionPane.WARNING_MESSAGE);
     }
 
     /**

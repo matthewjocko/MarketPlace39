@@ -1,3 +1,4 @@
-ID, Email, Password, Type, First Name, Last Name
-<Line/>0<Col/>AdminPanel<Col/>10401600174416801760<Col/>AdminPanel<Col/>AdminPanel<Col/>AdminPanel
-<Line/>-2<Col/>email@email.com<Col/>1728<Col/>Seller<Col/>first<Col/>last
+ID<Col/>Email<Col/>Password<Col/>Type<Col/>First Name<Col/>Last Name
+<Line/>-1<Col/>AdminPanel<Col/>10401600174416801760<Col/>AdminPanel<Col/>AdminPanel<Col/>AdminPanel
+<Line/>0<Col/>email@email.com<Col/>1728<Col/>Seller<Col/>first<Col/>last
+<Line/>-2<Col/>charlie.frank@gmail.com<Col/>784800816<Col/>Seller<Col/>charles<Col/>frank

@@ -32,10 +32,10 @@ public class MarketPlaceDriver extends JFrame {
      *  Start is called to start the frame and start the maketplace
      */
     public void Start() {
-//        this.add(loginPanel);
-//        loginPanel.start();  //Uncomment for deployment
-        this.add(adminPanel);
-        adminPanel.start();
+        this.add(loginPanel);
+        loginPanel.start();  //Uncomment for deployment
+//        this.add(adminPanel);
+//        adminPanel.start();
         this.setVisible(true);
 
     }
@@ -45,16 +45,17 @@ public class MarketPlaceDriver extends JFrame {
      * @param accountType Type to set
      */
     public void setAccountType(String accountType, String userID) {
+        System.out.println("Check 1");
         this.accountType = accountType;
         loginPanel.stop();
         remove(loginPanel);
-        if (accountType == "Seller") {
+        if (accountType.equals("Seller")) {
             add(sellerPanel);
             sellerPanel.start(userID);
-        } else if (accountType == "Buyer") {
+        } else if (accountType.equals("Buyer")) {
             add(buyerPanel);
             buyerPanel.start(userID);
-        } else if (accountType == "AdminPanel") {
+        } else if (accountType.equals("AdminPanel")) {
             add(adminPanel);
             adminPanel.start();
         }
