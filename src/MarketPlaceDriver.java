@@ -2,9 +2,9 @@
  * Final Project C212
  * Due: 4-28-17
  *
- * @Author: Matthew Lieberman
- * @Author: Adam Kummer
- * @Author: Charles Frank
+ * @Author Matthew Lieberman
+ * @Author Adam Kummer
+ * @Author Charles Frank
  *
  * Last Updated: 4-28-17
  *
@@ -46,8 +46,8 @@ public class MarketPlaceDriver extends JFrame {
     public void Start() {
 //        this.add(loginPanel);
 //        loginPanel.start();  //Uncomment for deployment
-        this.add(adminPanel);
-        adminPanel.start();
+        this.add(loginPanel);
+        loginPanel.start();
         this.setVisible(true);
 
     }

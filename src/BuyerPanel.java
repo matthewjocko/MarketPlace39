@@ -2,9 +2,9 @@
  * Final Project C212
  * Due: 4-28-17
  *
- * @Author: Matthew Lieberman
- * @Author: Adam Kummer
- * @Author: Charles Frank
+ * @Author Matthew Lieberman
+ * @Author Adam Kummer
+ * @Author Charles Frank
  *
  * Last Updated: 4-28-17
  *
