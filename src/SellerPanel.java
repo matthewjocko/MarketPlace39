@@ -214,21 +214,21 @@ public class SellerPanel extends JPanel {
     }
 
     /**
-     *  Fills the users 2d array with the contents from the users.txt file
+     *  Fills the transactions 2d array with the contents from the transactions.txt file
      */
     private void fillArrayUsers() {
-        for(int j = 0; j < inputData.length; j++) {
+        for(int j = 1; j < inputData.length; j++) {
             String currentLine = inputData[j];
             String[] tmpLine = currentLine.split(COLTAG);
             for(int i = 0; i < tmpLine.length; i++) {
                 String tmp = tmpLine[i];
-                users[j][i] = tmp;
+                users[j - 1][i] = tmp;
             }
         }
     }
 
     /**
-     *  Sets the users 2d array to the appropriate size
+     *  Sets the transactions 2d array to the appropriate size
      */
     private void setArrayUsers() {
         int rows = 0;
@@ -236,20 +236,58 @@ public class SellerPanel extends JPanel {
         Scanner in = null;
         String content = "";
         try {
-            in = new Scanner(userfile);
+            in = new Scanner(new File("Users.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        in.nextLine();
+
         while (in.hasNextLine()) {
             content = content + in.nextLine();
         }
         inputData = content.split(LINETAG);
-        rows = inputData.length;
-        fields = inputData[1].split(COLTAG).length;
+        rows = inputData.length - 1;
+        fields = inputData[0].split(COLTAG).length;
         users = new String[rows][fields];
         in.close();
     }
+
+//    /**
+//     *  Fills the users 2d array with the contents from the users.txt file
+//     */
+//    private void fillArrayUsers() {
+//        for(int j = 0; j < inputData.length; j++) {
+//            String currentLine = inputData[j];
+//            String[] tmpLine = currentLine.split(COLTAG);
+//            for(int i = 0; i < tmpLine.length; i++) {
+//                String tmp = tmpLine[i];
+//                users[j][i] = tmp;
+//            }
+//        }
+//    }
+//
+//    /**
+//     *  Sets the users 2d array to the appropriate size
+//     */
+//    private void setArrayUsers() {
+//        int rows = 0;
+//        int fields = 0;
+//        Scanner in = null;
+//        String content = "";
+//        try {
+//            in = new Scanner(userfile);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        in.nextLine();
+//        while (in.hasNextLine()) {
+//            content = content + in.nextLine();
+//        }
+//        inputData = content.split(LINETAG);
+//        rows = inputData.length;
+//        fields = inputData[1].split(COLTAG).length;
+//        users = new String[rows][fields];
+//        in.close();
+//    }
 
     /**
      * Fills the textfields in the updateInvPan
@@ -313,45 +351,83 @@ public class SellerPanel extends JPanel {
     }
 
     /**
-     *  Fills the inventory 2d array with the contents from the inventory.txt file
+     *  Fills the transactions 2d array with the contents from the transactions.txt file
      */
     private void fillArray() {
-        for(int j = 0; j < inputDataInv.length; j++) {
+        for(int j = 1; j < inputDataInv.length; j++) {
             String currentLine = inputDataInv[j];
             String[] tmpLine = currentLine.split(COLTAG);
             for(int i = 0; i < tmpLine.length; i++) {
                 String tmp = tmpLine[i];
-                if (!tmp.equals("")) {
-                    inventory[j][i] = tmp;
-                }
+                inventory[j - 1][i] = tmp;
             }
         }
     }
 
     /**
-     *  Sets the inventory 2d array to the appropriate size
+     *  Sets the transactions 2d array to the appropriate size
      */
     private void setArray() {
-        inventory = null;
         int rows = 0;
         int fields = 0;
         Scanner in = null;
         String content = "";
         try {
-            in = new Scanner(inventoryFile);
+            in = new Scanner(new File("Users.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        in.nextLine();
+
         while (in.hasNextLine()) {
             content = content + in.nextLine();
         }
         inputDataInv = content.split(LINETAG);
-        rows = inputDataInv.length;
-        fields = COLS;
+        rows = inputDataInv.length - 1;
+        fields = inputDataInv[0].split(COLTAG).length;
         inventory = new String[rows][fields];
         in.close();
     }
+
+//    /**
+//     *  Fills the inventory 2d array with the contents from the inventory.txt file
+//     */
+//    private void fillArray() {
+//        for(int j = 0; j < inputDataInv.length; j++) {
+//            String currentLine = inputDataInv[j];
+//            String[] tmpLine = currentLine.split(COLTAG);
+//            for(int i = 0; i < tmpLine.length; i++) {
+//                String tmp = tmpLine[i];
+//                if (!tmp.equals("")) {
+//                    inventory[j][i] = tmp;
+//                }
+//            }
+//        }
+//    }
+//
+//    /**
+//     *  Sets the inventory 2d array to the appropriate size
+//     */
+//    private void setArray() {
+//        inventory = null;
+//        int rows = 0;
+//        int fields = 0;
+//        Scanner in = null;
+//        String content = "";
+//        try {
+//            in = new Scanner(inventoryFile);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        in.nextLine();
+//        while (in.hasNextLine()) {
+//            content = content + in.nextLine();
+//        }
+//        inputDataInv = content.split(LINETAG);
+//        rows = inputDataInv.length;
+//        fields = COLS;
+//        inventory = new String[rows][fields];
+//        in.close();
+//    }
 
     /**
      * Updates personal information
