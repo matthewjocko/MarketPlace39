@@ -34,8 +34,8 @@ public class MarketPlaceDriver extends JFrame {
     public void Start() {
 //        this.add(loginPanel);
 //        loginPanel.start();  //Uncomment for deployment
-        this.add(sellerPanel);
-        sellerPanel.start("-2");
+        this.add(buyerPanel);
+        buyerPanel.start("-2");
         this.setVisible(true);
 
     }
