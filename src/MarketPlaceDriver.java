@@ -1,18 +1,11 @@
-/**
- * Final Project C212
- * Due: 4-28-17
- *
- * @Author Matthew Lieberman
- * @Author Adam Kummer
- * @Author Charles Frank
- *
- * Last Updated: 4-28-17
- *
- */
-
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Charles Frank
+ * charfran
+ * Apr 24, 2017
+ */
 public class MarketPlaceDriver extends JFrame {
 
     public final int FRAME_WIDTH = 1000;
@@ -42,10 +35,10 @@ public class MarketPlaceDriver extends JFrame {
      *  Start is called to start the frame and start the maketplace
      */
     public void Start() {
-//        this.add(loginPanel);
-//        loginPanel.start();  //Uncomment for deployment
-        this.add(sellerPanel);
-        sellerPanel.start("0");
+        this.add(loginPanel);
+        loginPanel.start();  //Uncomment for deployment
+//        this.add(adminPanel);
+//        adminPanel.start();
         this.setVisible(true);
 
     }
@@ -55,16 +48,17 @@ public class MarketPlaceDriver extends JFrame {
      * @param accountType Type to set
      */
     public void setAccountType(String accountType, String userID) {
+        System.out.println("Check 1");
         this.accountType = accountType;
         loginPanel.stop();
         remove(loginPanel);
-        if (accountType == "Seller") {
+        if (accountType.equals("Seller")) {
             add(sellerPanel);
             sellerPanel.start(userID);
-        } else if (accountType == "Buyer") {
+        } else if (accountType.equals("Buyer")) {
             add(buyerPanel);
             buyerPanel.start(userID);
-        } else if (accountType == "AdminPanel") {
+        } else if (accountType.equals("AdminPanel")) {
             add(adminPanel);
             adminPanel.start();
         }

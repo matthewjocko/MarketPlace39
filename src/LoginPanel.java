@@ -163,17 +163,16 @@ public class LoginPanel extends JPanel{
     }
 
     /**
-     *  Updates the users 2d array with content from users.txt
+     *  Updates the transactions 2d array with content from transactions.txt
      */
     private void updateUsers() {
         inputData = null;
         setArray();
         fillArray();
-        lastID = Integer.valueOf(users[users.length - 1][0]);
     }
 
     /**
-     *  Fills the users 2d array with the contents from the users.txt file
+     *  Fills the transactions 2d array with the contents from the transactions.txt file
      */
     private void fillArray() {
         for(int j = 1; j < inputData.length; j++) {
@@ -181,13 +180,13 @@ public class LoginPanel extends JPanel{
             String[] tmpLine = currentLine.split(COLTAG);
             for(int i = 0; i < tmpLine.length; i++) {
                 String tmp = tmpLine[i];
-                users[j][i] = tmp;
+                users[j - 1][i] = tmp;
             }
         }
     }
 
     /**
-     *  Sets the users 2d array to the appropriate size
+     *  Sets the transactions 2d array to the appropriate size
      */
     private void setArray() {
         int rows = 0;
@@ -195,17 +194,17 @@ public class LoginPanel extends JPanel{
         Scanner in = null;
         String content = "";
         try {
-            in = new Scanner(userfile);
+            in = new Scanner(new File("Users.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        in.nextLine();
+
         while (in.hasNextLine()) {
             content = content + in.nextLine();
         }
         inputData = content.split(LINETAG);
-        rows = inputData.length;
-        fields = COLS;
+        rows = inputData.length - 1;
+        fields = inputData[0].split(COLTAG).length;
         users = new String[rows][fields];
         in.close();
     }
@@ -249,7 +248,7 @@ public class LoginPanel extends JPanel{
                 fw = new FileWriter(userfile, true);
                 writer = new PrintWriter(fw);
                 newAccount = "\n" + LINETAG + (lastID + 1) + COLTAG + email + COLTAG + hash(password) + COLTAG + type + COLTAG + firstName + COLTAG + lastName;
-                writer.write(newAccount);
+                writer.print(newAccount);
                 writer.close();
                 fw.close();
                 lastID = lastID + 1;
