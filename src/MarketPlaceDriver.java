@@ -14,7 +14,7 @@ public class MarketPlaceDriver extends JFrame {
     LoginPanel loginPanel = new LoginPanel(this);
         BuyerPanel buyerPanel = new BuyerPanel();
         SellerPanel sellerPanel = new SellerPanel();
-    //    AdminPanel adminPanel = new AdminPanel();     TODO uncomment once sellerPanel is created
+        AdminPanel adminPanel = new AdminPanel();
     String accountType = "";
 
     //TODO add JFrame fields
@@ -34,8 +34,8 @@ public class MarketPlaceDriver extends JFrame {
     public void Start() {
 //        this.add(loginPanel);
 //        loginPanel.start();  //Uncomment for deployment
-        this.add(buyerPanel);
-        buyerPanel.start("-2");
+        this.add(adminPanel);
+        adminPanel.start();
         this.setVisible(true);
 
     }
@@ -54,9 +54,9 @@ public class MarketPlaceDriver extends JFrame {
         } else if (accountType == "Buyer") {
             add(buyerPanel);
             buyerPanel.start(userID);
-        } else if (accountType == "Admin") {
-//            add(adminPanel);
-//            adminPanel.start();
+        } else if (accountType == "AdminPanel") {
+            add(adminPanel);
+            adminPanel.start();
         }
     }
 }
