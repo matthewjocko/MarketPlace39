@@ -8,14 +8,14 @@ public class Item {
 
     private String description;
     private String Name;
-    private int ID;
-    private int sellerID;
+    private String itemID;
+    private String sellerID;
 
-    public Item(double price, String description, String name, int ID, int sellerID) {
+    public Item(String name, double price, String description, String itemID, String sellerID) {
         this.price = price;
         this.description = description;
         Name = name;
-        this.ID = ID;
+        this.itemID = itemID;
         this.sellerID = sellerID;
     }
 
@@ -31,11 +31,11 @@ public class Item {
         return Name;
     }
 
-    public int getID() {
-        return ID;
+    public String getItemID() {
+        return itemID;
     }
 
-    public int getSellerID() {
+    public String getSellerID() {
         return sellerID;
     }
 }

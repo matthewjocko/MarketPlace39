@@ -12,8 +12,8 @@ public class MarketPlaceDriver extends JFrame {
     public final int FRAME_HEIGHT = 1000;
 
     LoginPanel loginPanel = new LoginPanel(this);
-    //    BuyerPanel buyerPanel = new BuyerPanel();     TODO uncomment once sellerPanel is created
-    //    SellerPanel sellerPanel = new SellerPanel();  TODO uncomment once sellerPanel is created
+        BuyerPanel buyerPanel = new BuyerPanel();
+        SellerPanel sellerPanel = new SellerPanel();
     //    AdminPanel adminPanel = new AdminPanel();     TODO uncomment once sellerPanel is created
     String accountType = "";
 
@@ -21,7 +21,7 @@ public class MarketPlaceDriver extends JFrame {
 
     public MarketPlaceDriver() {
         super();
-        setTitle("Shapes");
+        setTitle("Market Place");
         setSize(loginPanel.getSize());
         setLayout(new GridLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,9 +32,12 @@ public class MarketPlaceDriver extends JFrame {
      *  Start is called to start the frame and start the maketplace
      */
     public void Start() {
-        this.add(loginPanel);
+//        this.add(loginPanel);
+//        loginPanel.start();  //Uncomment for deployment
+        this.add(sellerPanel);
+        sellerPanel.start("-2");
         this.setVisible(true);
-        loginPanel.start();
+
     }
 
     /**
@@ -46,11 +49,11 @@ public class MarketPlaceDriver extends JFrame {
         loginPanel.stop();
         remove(loginPanel);
         if (accountType == "Seller") {
-//            add(sellerPanel);
-//            sellerPanel.start();
+            add(sellerPanel);
+            sellerPanel.start(userID);
         } else if (accountType == "Buyer") {
-//            add(buyerPanel);
-//            buyerPanel.start();
+            add(buyerPanel);
+            buyerPanel.start(userID);
         } else if (accountType == "Admin") {
 //            add(adminPanel);
 //            adminPanel.start();

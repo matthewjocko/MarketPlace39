@@ -7,10 +7,10 @@ public class Listing {
 
     private Item item;
     private int quantity;
-    private int sellerID;
+    private String sellerID;
 
 
-    public Listing(Item item, int quantity, int sellerID) {
+    public Listing(Item item, int quantity, String sellerID) {
         this.item = item;
         this.quantity = quantity;
         this.sellerID = sellerID;
@@ -24,10 +24,12 @@ public class Listing {
         return quantity;
     }
 
-    public int getSellerID() {
+    public String getSellerID() {
         return sellerID;
     }
 
-
+    public void sold(int amount) {
+        quantity = quantity - amount;
+    }
 
 }
