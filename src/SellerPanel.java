@@ -145,7 +145,7 @@ public class SellerPanel extends JPanel {
                 "Updating personal information will reset password to new password!",
                     "WARNING", JOptionPane.WARNING_MESSAGE);
         this.sellerID = sellerID;
-        updateInventory();
+//        updateInventory();
         updateInventoryDisplay();
         add(scrollPane, BorderLayout.NORTH);
         setFocusable(true);
@@ -272,6 +272,9 @@ public class SellerPanel extends JPanel {
         model = new DefaultListModel();
         list = new JList(model);
         scrollPane = new JScrollPane(list);
+        for (Listing listing : listings) {
+            model.removeElement(listing.getItem().getName());
+        }
         for (Listing listing : listings) {
             model.addElement(listing.getItem().getName());
         }
