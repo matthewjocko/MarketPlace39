@@ -3,7 +3,6 @@
  * Created by AdamKummer on 4/27/17.
  * Charles Frank
  */
-//TODO - fix weird spacings
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
