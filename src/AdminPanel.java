@@ -1,8 +1,16 @@
-
 /**
- * Created by AdamKummer on 4/27/17.
- * Charles Frank
+ * Final Project C212
+ * Due: 4-28-17
+ *
+ * @Author Matthew Lieberman
+ * @Author Adam Kummer
+ * @Author Charles Frank
+ *
+ * Last Updated: 4-28-17
+ *
  */
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -171,6 +179,11 @@ public class AdminPanel extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * This Method
+     * @param display Display is the name of the area to write to
+     * @param fileName The name of the file to write to
+     */
     private static void writeTextFile(JTextArea display, String fileName) {
         try {
             FileWriter outStream = new FileWriter(fileName);
