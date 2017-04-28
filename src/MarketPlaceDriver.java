@@ -1,11 +1,18 @@
+/**
+ * Final Project C212
+ * Due: 4-28-17
+ *
+ * @Author Matthew Lieberman
+ * @Author Adam Kummer
+ * @Author Charles Frank
+ *
+ * Last Updated: 4-28-17
+ *
+ */
+
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Charles Frank
- * charfran
- * Apr 24, 2017
- */
 public class MarketPlaceDriver extends JFrame {
 
     public final int FRAME_WIDTH = 1000;
@@ -19,6 +26,10 @@ public class MarketPlaceDriver extends JFrame {
 
     //TODO add JFrame fields
 
+    /**
+    * Defines the default behaviors for the MarketPlaceDriver
+    *
+    */
     public MarketPlaceDriver() {
         super();
         setTitle("Market Place");
@@ -30,12 +41,13 @@ public class MarketPlaceDriver extends JFrame {
 
     /**
      *  Start is called to start the frame and start the maketplace
+     *
      */
     public void Start() {
 //        this.add(loginPanel);
 //        loginPanel.start();  //Uncomment for deployment
-        this.add(adminPanel);
-        adminPanel.start();
+        this.add(sellerPanel);
+        sellerPanel.start("0");
         this.setVisible(true);
 
     }

@@ -1,3 +1,15 @@
+/**
+ * Final Project C212
+ * Due: 4-28-17
+ *
+ * @Author Matthew Lieberman
+ * @Author Adam Kummer
+ * @Author Charles Frank
+ *
+ * Last Updated: 4-28-17
+ *
+ */
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -5,11 +17,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Charles Frank
- * charfran
- * Apr 27, 2017
- */
 public class BuyerPanel extends JPanel {
     private String buyerID;
     private File inventoryFile;
@@ -77,6 +84,7 @@ public class BuyerPanel extends JPanel {
 
     /**
      * Starts the BuyerPanel
+     * @param buyerID This is the tag that identifies the id of the buyer
      */
     public void start(String buyerID) {
         setFocusable(true);
@@ -145,3 +153,5 @@ public class BuyerPanel extends JPanel {
         in.close();
     }
 }
+
+

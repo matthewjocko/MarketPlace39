@@ -1,3 +1,16 @@
+/**
+ * Final Project C212
+ * Due: 4-28-17
+ *
+ * @Author Matthew Lieberman
+ * @Author Adam Kummer
+ * @Author Charles Frank
+ *
+ * Last Updated: 4-28-17
+ *
+ */
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,11 +19,6 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/**
- * Charles Frank
- * charfran
- * Apr 24, 2017
- */
 public class LoginPanel extends JPanel{
     private final String[] TYPES = {"Seller", "Buyer"};
 
@@ -168,7 +176,7 @@ public class LoginPanel extends JPanel{
      *  Fills the users 2d array with the contents from the users.txt file
      */
     private void fillArray() {
-        for(int j = 0; j < inputData.length; j++) {
+        for(int j = 1; j < inputData.length; j++) {
             String currentLine = inputData[j];
             String[] tmpLine = currentLine.split(COLTAG);
             for(int i = 0; i < tmpLine.length; i++) {

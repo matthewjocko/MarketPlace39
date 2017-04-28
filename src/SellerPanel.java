@@ -1,3 +1,15 @@
+/**
+ * Final Project C212
+ * Due: 4-28-17
+ *
+ * @Author Matthew Lieberman
+ * @Author Adam Kummer
+ * @Author Charles Frank
+ *
+ * Last Updated: 4-28-17
+ *
+ */
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -7,11 +19,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Charles Frank
- * charfran
- * Apr 27, 2017
- */
 public class SellerPanel extends JPanel {
     private String sellerID;
     private File inventoryFile;
@@ -145,7 +152,7 @@ public class SellerPanel extends JPanel {
                 "Updating personal information will reset password to new password!",
                     "WARNING", JOptionPane.WARNING_MESSAGE);
         this.sellerID = sellerID;
-        updateInventory();
+//        updateInventory();
         updateInventoryDisplay();
         add(scrollPane, BorderLayout.NORTH);
         setFocusable(true);
@@ -272,6 +279,9 @@ public class SellerPanel extends JPanel {
         model = new DefaultListModel();
         list = new JList(model);
         scrollPane = new JScrollPane(list);
+        for (Listing listing : listings) {
+            model.removeElement(listing.getItem().getName());
+        }
         for (Listing listing : listings) {
             model.addElement(listing.getItem().getName());
         }
