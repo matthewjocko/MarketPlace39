@@ -306,9 +306,5 @@ public class LoginPanel extends JPanel{
      * @param args
      */
     public static void main(String[] args) {
-//        LoginPanel loginPanel = new LoginPanel(null);
-//        String pass = "12345";
-//        char[] password = {pass.charAt(0), pass.charAt(1), pass.charAt(2), pass.charAt(3), pass.charAt(4)};
-//        loginPanel.createAccount("test@email.com", password, "Seller", "Nick", "Verdi");
     }
 }
