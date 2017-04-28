@@ -1,5 +1,4 @@
 ID, Email, Password, Type, First Name, Last Name
-000, Charlie@email.com, 12345, Seller, Charles, Frank
-1, test@email.com, 1681433494, Seller, Nick, Verdi
-2, Charlie.frank72@gmail.com, 1583709721, Seller, Charles, Frank
-3, abalani@iu.edu, 212151728, Seller, Arman, Balani
+0<Col/>email<Col/>985191728<Col/>Seller<Col/>Name<Col/>Name
+<Line/>1<Col/>email@email.com<Col/>17921552184018401904177618241600<Col/>Seller<Col/>first<Col/>name
+<Line/>2<Col/>a<Col/>1552<Col/>Seller<Col/>a<Col/>a

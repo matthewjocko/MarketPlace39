@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -18,7 +17,7 @@ public class LoginPanel extends JPanel{
     private MarketPlaceDriver marketPlaceDriver;
     private File userfile;
     private String[][] users;
-    private ArrayList<String> inputData;
+    private String[] inputData;
 
     private JLabel eEmailLbl;
     private JLabel ePasswordLbl;
@@ -43,12 +42,15 @@ public class LoginPanel extends JPanel{
     private ActionListener loginBtnLis;
     private ActionListener createAccountBtnLis;
 
+    private final String LINETAG = "<Line/>";
+    private final String ROWTAG = "<Col/>";
     private final int FRAME_WIDTH = 1000;
     private final int FRAME_HEIGHT = 1000;
     private final int DEFAULT_COLUNM_SIZE = 25;
     private final int y = 40;
     private final int x = 100;
     private int lastID = 0;
+
 
     public LoginPanel(MarketPlaceDriver marketPlaceDriver) {
         super();
@@ -155,7 +157,7 @@ public class LoginPanel extends JPanel{
      *  Updates the users 2d array with content from users.txt
      */
     private void updateUsers() {
-        inputData = new ArrayList<String>();
+        inputData = null;
         setArray();
         fillArray();
         lastID = Integer.valueOf(users[users.length - 1][0]);
@@ -165,17 +167,18 @@ public class LoginPanel extends JPanel{
      *  Fills the users 2d array with the contents from the users.txt file
      */
     private void fillArray() {
-        for(String currentLine : inputData) {
-            String[] tmpLine = currentLine.split(",");
+        for(int j = 0; j < inputData.length; j++) {
+            String currentLine = inputData[j];
+            String[] tmpLine = currentLine.split(ROWTAG);
             for(int i = 0; i < tmpLine.length; i++) {
                 String tmp = tmpLine[i];
-                if (tmp.charAt(0) == " ".charAt(0)) {
-                    tmp = tmp.substring(1);
-                }
-                if (tmp.charAt(tmp.length() - 1) == " ".charAt(0)) {
-                    tmp = tmp.substring(0, tmp.length() - 2);
-                }
-                users[inputData.indexOf(currentLine)][i] = tmp;
+//                if (tmp.charAt(0) == " ".charAt(0)) {
+//                    tmp = tmp.substring(1);
+//                }
+//                if (tmp.charAt(tmp.length() - 1) == " ".charAt(0)) {
+//                    tmp = tmp.substring(0, tmp.length() - 2);
+//                }
+                users[j][i] = tmp;
             }
         }
     }
@@ -187,20 +190,25 @@ public class LoginPanel extends JPanel{
         int rows = 0;
         int fields = 0;
         Scanner in = null;
+        String content = "";
         try {
             in = new Scanner(userfile);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         in.nextLine();
-        while(in.hasNextLine()) {
-            String nextLine = in.nextLine();
-            if(nextLine.charAt(0) != ",".charAt(0)) {
-                inputData.add(nextLine);
-            }
+//        while(in.hasNextLine()) {
+//            String nextLine = in.nextLine();
+//            if(nextLine.charAt(0) != ",".charAt(0)) {
+//                inputData.add(nextLine);
+//            }
+//        }
+        while (in.hasNextLine()) {
+            content = content + in.nextLine();
         }
-        rows = inputData.size();
-        fields = inputData.get(0).split(",").length;
+        inputData = content.split(LINETAG);
+        rows = inputData.length;
+        fields = inputData[0].split(ROWTAG).length;
         users = new String[rows][fields];
         in.close();
     }
@@ -212,6 +220,7 @@ public class LoginPanel extends JPanel{
         if (auth(email, password)) {
             for (String[] user : users) {
                 if (user[1].equals(email)) {
+                    clearInputs();
                     marketPlaceDriver.setAccountType(user[3], user[0]);
                 }
             }
@@ -234,13 +243,14 @@ public class LoginPanel extends JPanel{
             try {
                 fw = new FileWriter(userfile, true);
                 writer = new PrintWriter(fw);
-                newAccount = "\n" + (lastID + 1) + ", " + email + ", " + password.hashCode() + ", " + type + ", " + firstName + ", " + lastName;
+                newAccount = "\n" + LINETAG + (lastID + 1) + ROWTAG + email + ROWTAG + hash(password) + ROWTAG + type + ROWTAG + firstName + ROWTAG + lastName;
                 writer.write(newAccount);
                 writer.close();
                 fw.close();
                 lastID = lastID + 1;
                 JOptionPane.showMessageDialog(this, "Account created. You can now log in.", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
                 clearInputs();
+                updateUsers();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -272,8 +282,8 @@ public class LoginPanel extends JPanel{
      */
     private boolean auth(String email, char[] password) {
         for (int i = 0; i < users.length; i++) {
-            if (email == users[i][1]) {
-                if (password.hashCode() == Integer.valueOf(users[i][2])) {
+            if (email.equals(users[i][1])) {
+                if (hash(password).equals(users[i][2])) {
                     return true;
                 } else {
                     return false;
@@ -281,6 +291,14 @@ public class LoginPanel extends JPanel{
             }
         }
         return false;
+    }
+
+    private String hash(char[] password) {
+        String hash = "";
+        for (char ch : password) {
+            hash = hash + String.valueOf((int)ch * 16);
+        }
+        return hash;
     }
 
     /**
