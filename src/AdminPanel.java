@@ -43,6 +43,8 @@ public class AdminPanel extends JPanel implements ActionListener {
     private JButton generateTransactionHistoryReport = new JButton("Generate Transaction History Report");
     private JButton generateUserHistroyReport = new JButton("Generate User History Report");
 
+    private JScrollPane scrollPane;
+
     private JPanel usersPanel = new JPanel();
     private JPanel inventoryPanel = new JPanel();
     private JPanel transactionHistoryPanel = new JPanel();
@@ -104,10 +106,10 @@ public class AdminPanel extends JPanel implements ActionListener {
         container.add(transactionHistoryPanel);
         container.add(reportingPanel);
 
-        container.setLayout(new GridLayout(4, 1, 1, 1));
+        container.setLayout(new BoxLayout(container, BoxLayout.PAGE_AXIS));
 
-
-        add(container);
+        scrollPane = new JScrollPane(container);
+        add(scrollPane);
 
 
         this.setBounds(50, 50, 1000, 500);

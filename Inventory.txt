@@ -1,3 +1,2 @@
 Seller ID<Col/>Item ID<Col/>Name<Col/>Price<Col/>Description<Col/>Quantity
-<Line/>-2<Col/>11<Col/>newpro<Col/>200<Col/>new desc<Col/>4
-<Line/>-2<Col/>12<Col/>IOS<Col/>100<Col/>Iphone OS<Col/>2
+<Line/>2<Col/>11<Col/>newpro<Col/>200<Col/>new desc<Col/>3
