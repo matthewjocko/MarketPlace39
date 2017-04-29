@@ -261,8 +261,6 @@ public class LoginPanel extends JPanel{
         } else {
             JOptionPane.showMessageDialog(this, "Incorrect information entered. Try again...", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-
     }
 
     /**

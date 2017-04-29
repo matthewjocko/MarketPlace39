@@ -12,12 +12,10 @@ public class MarketPlaceDriver extends JFrame {
     public final int FRAME_HEIGHT = 1000;
 
     LoginPanel loginPanel = new LoginPanel(this);
-        BuyerPanel buyerPanel = new BuyerPanel();
-        SellerPanel sellerPanel = new SellerPanel();
-        AdminPanel adminPanel = new AdminPanel();
+    BuyerPanel buyerPanel = new BuyerPanel(this);
+    SellerPanel sellerPanel = new SellerPanel();
+    AdminPanel adminPanel = new AdminPanel();
     String accountType = "";
-
-    //TODO add JFrame fields
 
     /**
     * Defines the default behaviors for the MarketPlaceDriver
@@ -28,13 +26,13 @@ public class MarketPlaceDriver extends JFrame {
         setSize(loginPanel.getSize());
         setLayout(new GridLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Start();
+        start();
     }
 
     /**
-     *  Start is called to start the frame and start the maketplace
+     *  start is called to start the frame and start the maketplace
      */
-    public void Start() {
+    public void start() {
         this.add(loginPanel);
         loginPanel.start();  //Uncomment for deployment
 //        this.add(adminPanel);
@@ -62,5 +60,11 @@ public class MarketPlaceDriver extends JFrame {
             add(adminPanel);
             adminPanel.start();
         }
+    }
+
+    public void resetToLogin() {
+        buyerPanel.stop();
+        remove(buyerPanel);
+        start();
     }
 }
