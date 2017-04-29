@@ -262,21 +262,32 @@ public class BuyerPanel extends JPanel {
 //        return lines.toArray(new String[lines.size()]);
 //    }
 
-    public static void main(String args[]) {
-        JFrame f = new JFrame("BuyerPanel");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        BuyerPanel dual = new BuyerPanel();
+//    public static void main(String args[]) {
+//        JFrame f = new JFrame("BuyerPanel");
+//        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        BuyerPanel dual = new BuyerPanel();
+//        updateInventory();
+//        try {
+//            dual.addSourceElements(getElementsFromInv());
+////            dual.addSourceElements(invToStringArray("/Users/AdamKummer/IdeaProjects/something/src/MarketPlaceSeller/Inventory.txt"));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        f.getContentPane().add(dual, BorderLayout.CENTER);
+//        f.setSize(700, 300);
+//        f.setVisible(true);
+//    }
+
+    public void start(String userID) {
         updateInventory();
         try {
-            dual.addSourceElements(getElementsFromInv());
+            this.addSourceElements(getElementsFromInv());
 //            dual.addSourceElements(invToStringArray("/Users/AdamKummer/IdeaProjects/something/src/MarketPlaceSeller/Inventory.txt"));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        f.getContentPane().add(dual, BorderLayout.CENTER);
-        f.setSize(700, 300);
-        f.setVisible(true);
     }
+
 
     private static String[] getElementsFromInv() {
         String[] output = new String[inventory.length];
@@ -335,7 +346,7 @@ public class BuyerPanel extends JPanel {
         Scanner in = null;
         String content = "";
         try {
-            String inventoryFilePath = "/Users/AdamKummer/IdeaProjects/something/src/MarketPlaceSeller/Inventory.txt";
+            String inventoryFilePath = "Inventory.txt";
             in = new Scanner(new File(inventoryFilePath));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
